@@ -3,6 +3,7 @@ import {
 } from './crud.js';
 import {
   requerido,
+  MensagemAlertaTop,
 } from './funcoes.js';
 import { 
   agrupar_vendas,
@@ -16,8 +17,8 @@ export function GetCliente(key){
 https://francsilva.com.br/c/api/clientes/extrato_do_cliente/?tipo=full&key=${key}`];
     new Crud(url).get(function(error, response) {
         if (error) {
-            //MensagemAlerta(error, 400);
-            alert(JSON.stringify(error))
+            MensagemAlertaTop('Cliente não encontrado', 400);
+            //alert(JSON.stringify(error))
         } else {
           let cliente=response[0];
           let compras = [];
