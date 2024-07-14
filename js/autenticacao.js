@@ -9,8 +9,11 @@ export function getParametros() {
   
   if (key) {
     adicionarValor('key', key);
+    return key;
   }
-  return getToken()
+  else{
+    return getToken()
+  }
 }
 
 
