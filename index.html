@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Extrato do Cliente</title>
+  <link rel="stylesheet" href="css/site.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'loja/css/base.css' %}">
+  
+  
+  <link rel="icon" href="img/icone-192x192.png" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+      name="description"
+      content="Extrato de compras do cliente"
+    />
+  <link rel="apple-touch-icon" href="img/icon-512x512.png" />
+  <link rel="manifest" href="json/manifest-extrato.json">
+  
+</head>
+<body class="mt-3 pt-1 pb-5">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-auto">
+        <img class="img-fluid" width="65" src="img/icone-192x192.png">
+      </div>
+      <div class="col">
+        <h3 class="mb-0 mt-2">Extrato do Cliente</h3>
+        <small>Sistema de gerenciamento e gestão de vendas</small>
+      </div>
+    </div>
+    
+    <button id="install-button" style="display: none;" class="btn btn-dark w-100 mb-4">Instalar App Extrato do Cliente</button>
+  </div>
+  
+  <div class="container mb-5" id="content">
+    <div id="cliente-data"></div>
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+      <li class="nav-item flex-fill" role="presentation">
+        <button class="nav-link active w-100" id="extrato-tab" data-bs-toggle="tab" data-bs-target="#extrato" type="button" role="tab" aria-controls="extrato" aria-selected="true">Extrato</button>
+      </li>
+      <li class="nav-item flex-fill" role="presentation">
+        <button class="nav-link w-100" id="compras-tab" data-bs-toggle="tab" data-bs-target="#compras" type="button" role="tab" aria-controls="compras" aria-selected="false">Compras</button>
+      </li>
+      <li class="nav-item flex-fill" role="presentation">
+        <button class="nav-link  w-100" id="pagamentos-tab" data-bs-toggle="tab" data-bs-target="#pagamentos" type="button" role="tab" aria-controls="pagamentos" aria-selected="false">Pagamentos</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active pt-4" id="extrato" role="tabpanel" aria-labelledby="extrato-tab">
+          <div id="extrato-data"></div>
+        </div>
+       <div class="tab-pane fade pt-4" id="compras" role="tabpanel" aria-labelledby="compras-tab">
+          <div id="compras-data"></div>
+        </div>
+        <div class="tab-pane fade pt-4" id="pagamentos" role="tabpanel" aria-labelledby="pagamentos-tab">
+          <div id="pagamentos-data"></div>
+        </div>
+      </div>
+  </div>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-aP5C9x/jK1kp3n1y5skoZs0KTxLCy6rttStVFiwpj4EJmCdUHmp9wClc2fT5aPhR" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Inclua a biblioteca jQuery LoadingOverlay -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+  
+
+   <script type="module" src="js/app.js"></script> 
+  
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("js/service-worker-extrato.js")
+        .then(function(registration) {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(function(error) {
+          console.log('Falha ao registrar o Service Worker:', error);
+        });
+    }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installButton = document.getElementById('install-button');
+      installButton.style.display = 'block';
+
+      installButton.addEventListener('click', () => {
+        installButton.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            MensagemAlertaTop('Parabéns! instalando App...');
+            console.log('Usuário aceitou instalar o PWA');
+          } else {
+            MensagemAlertaTop('Ok... você pode continuar usando o sistema pelo navegador.', 400);
+            console.log('Usuário recusou instalar o PWA');
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
+  </script>
+  
+  <script>
+        // Exemplo de dados
+        var data = {
+            title: "Exemplo Mustache",
+            content: "Este é um exemplo básico de como usar Mustache.js"
+        };
+
+        // Carregar o template e renderizar
+        
+    </script>
+</body>
+</html>

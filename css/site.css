@@ -1,0 +1,3 @@
+.bg-success-transparent {
+  background-color: rgba(40, 167, 69, 0.2) !important; /* 0.5 é a opacidade, variando de 0 a 1 */
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Sistema de Extrato do cliente",
+  "short_name": "Extrato",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/img/icone-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icone-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/static/loja/pwa/img/screenshot1.jpg",
+      "sizes": "720x1560",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/static/loja/pwa/img/screenshot2.jpg",
+      "sizes": "720x1560",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/static/loja/pwa/img/screenshot3.jpg",
+      "sizes": "720x1560",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/static/loja/pwa/img/screenshot4.jpg",
+      "sizes": "720x1560",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/static/loja/pwa/img/screenshot5.jpg",
+      "sizes": "720x1560",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/static/loja/pwa/img/screenshot6.jpg",
+      "sizes": "720x1560",
+      "type": "image/jpg"
+    }
+  ],
+  "description": "Sistema de gerenciamento de extrato de comoras do sistema Gestão de vendas",
+  "id": "br.com.francsilva.cliente",
+  "lang": "pt",
+  "orientation": "portrait",
+  "categories": [
+    "business"
+  ]
+}

@@ -1,0 +1,39 @@
+<div  class="list-group">
+      {{#data}}
+      <div class="row mt-3">
+        <div class="col-auto">
+          {{data_da_venda}}
+        </div>
+        <div class="col text-end">
+          <span class="preco">{{total}}</span>
+        </div>
+      </div>
+      {{#vendas}}
+        
+      <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+      <div class="row align-items-center">
+        <div class="col-2">
+        <img src="{{icone}}" class="img-fluid rounded-circle" alt="">
+        </div>
+        <div class="col">
+        <p class="mb-0"><span>#C-{{id}}</span></p>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1 preco">{{total}}</h5>
+        </div>
+        
+        <small class="text-muted">
+        Pago: <span class="preco">{{pago}}</span> em aberto: <span class="preco">{{aberto}}</span>
+        </small>
+        </div>
+      </div>
+      </a>
+      {{/vendas}}
+      {{/data}}
+      {{^data}}
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+        <div class="text-center pt-5 pb-5">
+          <h5 class="mb-1 text-muted">Nenhum resultado encontrado</h5>
+        </div>
+      </a>
+      {{/data}}
+      </div>

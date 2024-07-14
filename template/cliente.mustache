@@ -1,0 +1,10 @@
+<p>
+      <b>Vendedor:</b> {{ loja.nome_da_loja }}<br>
+      <b>Contato do vendedor: </b> <a class="text-decoration-none" href="whatsapp://send?phone=55{{loja.telefone_whatsapp}}&text=Oi">{{loja.telefone_whatsapp}}</a> <br>
+    </p>
+    <p>
+      <b>Cliente:</b> {{ nome_do_cliente }}<br>
+      <b>Total em aberto:</b> <span class="preco">
+        {{ venda_resumo.total_em_aberto }}
+      </span>
+    </p>

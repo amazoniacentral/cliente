@@ -1,2 +1,2 @@
-# cliente
-Extrado de cliebte do app Gestao de vendas
+# Cliente
+Extrato do cliente do app Gestão de vendas

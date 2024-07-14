@@ -1,0 +1,45 @@
+ <div  class="list-group">
+        {{#listaPagamentos}}
+        <div class="row mt-3">
+          <div class="col-auto">
+            {{data_do_pagamento}}
+          </div>
+          <div class="col text-end text-muted">
+            Pago 
+            <span class="preco">{{valor_total_pago}}</span>
+          </div>
+        </div>
+        {{#pagamentos}}
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action {{#pago}}bg-success-transparent{{/pago}}">
+          <div class="row align-items-center">
+            <div class="col">
+            <p class="mb-0">
+              ref: #C-{{venda}}
+            </p>
+            <small class="text-muted">
+            Venda {{forma_de_pagamento}}
+            </small>
+            </div>
+            <div class="col-auto text-end">
+              <b class="preco">{{valor}}</b>
+              <div class="small">
+                {{#pago}}
+                  recebido
+                {{/pago}}
+                {{^pago}}
+                  receber
+                {{/pago}}
+              </div>
+            </div>
+          </div>
+        </a>
+        {{/pagamentos}}
+        {{/listaPagamentos}}
+        {{^listaPagamentos}}
+          <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+          <div class="text-center pt-5 pb-5">
+            <h5 class="mb-1 text-muted">Nenhum resultado encontrado</h5>
+          </div>
+        </a>
+        {{/listaPagamentos}}
+        </div>

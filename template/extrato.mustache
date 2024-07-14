@@ -1,0 +1,50 @@
+ <div  class="list-group">
+        {{#extrato}}
+        <div class="row mt-3">
+          <div class="col-auto">
+            {{data}}
+          </div>
+          <div class="col text-end text-muted">
+            saldo em aberto
+            <span class="preco">{{totalValor}}</span>
+          </div>
+        </div>
+        {{#items}}
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action {{^is_compra}}bg-success-transparent{{/is_compra}}">
+          <div class="row align-items-center">
+            <div class="col">
+            <p class="mb-0"> 
+              {{#is_compra}}
+                Compra
+              {{/is_compra}}
+              {{^is_compra}}
+                Pagamento
+              {{/is_compra}}
+            </p>
+            <small class="text-muted">
+            Venda {{forma_de_pagamento}}
+            </small>
+            </div>
+            <div class="col-auto text-end">
+              <b class="preco">{{valor}}</b>
+              <div class="small">
+              {{#is_compra}}
+                adicionado
+              {{/is_compra}}
+              {{^is_compra}}
+                recebido
+              {{/is_compra}}
+              </div>
+            </div>
+          </div>
+        </a>
+        {{/items}}
+        {{/extrato}}
+        {{^extrato}}
+          <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+          <div class="text-center pt-5 pb-5">
+            <h5 class="mb-1 text-muted">Nenhum resultado encontrado</h5>
+          </div>
+        </a>
+        {{/extrato}}
+</div>
