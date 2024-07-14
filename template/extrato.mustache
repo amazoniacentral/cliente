@@ -1,10 +1,10 @@
  <div  class="list-group">
         {{#extrato}}
         <div class="row mt-3">
-          <div class="col-auto">
+          <div class="col-auto text">
             {{data}}
           </div>
-          <div class="col text-end text-muted">
+          <div class="col d-none text-end text-muted">
             saldo em aberto
             <span class="preco">{{totalValor}}</span>
           </div>
@@ -21,7 +21,7 @@
                 Pagamento
               {{/is_compra}}
             </p>
-            <small class="text-muted">
+            <small class="text-muted d-none">
             Venda {{forma_de_pagamento}}
             </small>
             </div>

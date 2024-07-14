@@ -142,15 +142,6 @@ function templateCliente(data)
 
 
 function agruparExtrato(extrato) {
-  /*
-  extrato = extrato.sort((a, b) => {
-              let dateA = new Date(a.data.split('/').reverse().join(''));
-              let dateB = new Date(b.data.split('/').reverse().join(''));
-              return dateA - dateB;
-          }).reverse();*/
-  
-  let total_pago =0;
-  let total_compras=0;
   const agrupadoPorData = extrato.reverse().reduce((acc, item) => {
     if (!acc[item.data]) {
       acc[item.data] = {
@@ -158,23 +149,30 @@ function agruparExtrato(extrato) {
         items: []
       };
     }
-    if(item.is_compra){
-      total_compras+=parseFloat(item.valor);
-    }
-    else{
-      total_pago+=parseFloat(item.valor);
-    }
-    acc[item.data].totalValor = total_compras - total_pago;
+    acc[item.data].totalValor += item.valor;
     acc[item.data].items.push(item);
     return acc;
   }, {});
 
-  const resultado = Object.keys(agrupadoPorData).map(data => {
+  let resultado = Object.keys(agrupadoPorData).map(data => {
     return {
       data: data,
       totalValor: agrupadoPorData[data].totalValor,
       items: agrupadoPorData[data].items
     };
+  });
+
+  // Função para converter a data de dd/mm/yyyy para yyyy-mm-dd para facilitar a ordenação
+  function converterData(data) {
+    const [dia, mes, ano] = data.split('/');
+    return `${ano}-${mes}-${dia}`;
+  }
+
+  // Ordenar o resultado pela data convertida
+  resultado.sort((a, b) => {
+    const dataA = converterData(a.data);
+    const dataB = converterData(b.data);
+    return dataA.localeCompare(dataB);
   });
 
   return resultado.reverse();

@@ -15,6 +15,9 @@ export function getParametros() {
 
 
 function adicionarValor(chave, novoValor) {
+    localStorage.setItem(chave, novoValor);
+    
+    /*
     let valoresExistentes = localStorage.getItem(chave);
     
     if (!valoresExistentes) {
@@ -26,7 +29,7 @@ function adicionarValor(chave, novoValor) {
     if (!lista.includes(JSON.stringify(novoValor))) {
       valoresExistentes.push(novoValor); 
       localStorage.setItem(chave, JSON.stringify(valoresExistentes)); 
-    }
+    }*/
 }
 
 function getToken(){
