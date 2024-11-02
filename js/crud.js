@@ -12,7 +12,7 @@ export class Crud {
 
   fetchWithToken(url, method, data = null) {
     let dados = {
-      url: url,
+      url: `https://gvendas.app.br${url}`,
       type: method,
       data: data,
       processData: false,

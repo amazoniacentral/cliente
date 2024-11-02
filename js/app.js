@@ -6,8 +6,8 @@ import {
 }from './cliente.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    const key = getParametros();
-    GetCliente(key)
+    const {id, token} = getParametros();
+    GetCliente(id, token)
 });
 
 

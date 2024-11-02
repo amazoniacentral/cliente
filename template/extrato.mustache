@@ -1,7 +1,7 @@
  <div  class="list-group">
         {{#extrato}}
         <div class="row mt-3">
-          <div class="col-auto text">
+          <div class="col-auto text-muted small">
             {{data}}
           </div>
           <div class="col d-none text-end text-muted">
@@ -15,7 +15,7 @@
             <div class="col">
             <p class="mb-0"> 
               {{#is_compra}}
-                Compra
+                Nova compra
               {{/is_compra}}
               {{^is_compra}}
                 Pagamento
@@ -26,8 +26,14 @@
             </small>
             </div>
             <div class="col-auto text-end">
+              {{#is_compra}}
+                +
+              {{/is_compra}}
+              {{^is_compra}}
+                -
+              {{/is_compra}}
               <b class="preco">{{valor}}</b>
-              <div class="small">
+              <div class="small d-none">
               {{#is_compra}}
                 adicionado
               {{/is_compra}}

@@ -12,13 +12,14 @@ import {
   agruparPagamento,
 } from './pagamentos.js';
 
-export function GetCliente(key){
-  const url = [`
-https://francsilva.com.br/c/api/clientes/extrato_do_cliente/?tipo=full&key=${key}`];
+export function GetCliente(id,token){
+  // "/c/api/clientes/1/extrato/2f3bcac7-2b3e-4bf0-a1f6-c7b06ae031c4/full/"
+    const url = [
+      `/c/api/clientes/${id}/extrato/${token}/full/`,
+    ];
     new Crud(url).get(function(error, response) {
         if (error) {
             MensagemAlertaTop('Cliente não encontrado', 400);
-            //alert(JSON.stringify(error))
         } else {
           let cliente=response[0];
           let compras = [];

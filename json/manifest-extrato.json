@@ -1,6 +1,6 @@
 {
-  "name": "Sistema de Extrato do cliente",
-  "short_name": "Extrato",
+  "name": "Área do Cliente GVendas",
+  "short_name": "Ciente GVendas",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

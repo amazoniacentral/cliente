@@ -1,4 +1,4 @@
-const CACHE_NAME = 'extrato_version_2';
+const CACHE_NAME = 'extrato_version_3';
 const OFFLINE_URL = '/offline.html';
 const FILES_TO_CACHE = [
     OFFLINE_URL,
