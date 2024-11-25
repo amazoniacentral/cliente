@@ -1,4 +1,4 @@
-const CACHE_NAME = 'extrato_version_3';
+const CACHE_NAME = 'extrato_version_4';
 const OFFLINE_URL = '/offline.html';
 const FILES_TO_CACHE = [
     OFFLINE_URL,
@@ -35,7 +35,10 @@ self.addEventListener('install', event => {
 // Evento de ativação do Service Worker
 self.addEventListener('activate', event => {
     event.waitUntil(
+      (async () => {
+        await clearOldCaches();
         self.clients.claim() // Assume o controle das páginas abertas
+      }
     );
 });
 
