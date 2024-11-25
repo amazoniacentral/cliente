@@ -1,9 +1,9 @@
 import {
   getParametros,
-} from './autenticacao.js?v=1';
+} from './autenticacao.js?v=2';
 import {
   GetCliente,
-}from './cliente.js?v=1';
+}from './cliente.js?v=2';
 
 document.addEventListener('DOMContentLoaded', function() {
     const {id, token} = getParametros();

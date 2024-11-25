@@ -15,7 +15,7 @@ import {
 export function GetCliente(id,token){
   // "/c/api/clientes/1/extrato/2f3bcac7-2b3e-4bf0-a1f6-c7b06ae031c4/full/"
     const url = [
-      `/c/api/clientes/${id}/extrato/${token}/full/`,
+      `/gvendas/api/clientes/${id}/extrato/${token}/full/`,
     ];
     new Crud(url).get(function(error, response) {
         if (error) {
